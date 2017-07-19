@@ -1,0 +1,31 @@
+{
+  "name": "WPandu/kredivo-php",
+  "type": "library",
+  "description": "Kredivo payment gateway API wrapper",
+  "authors": [
+    {
+      "name": "Pandu Warjaya",
+      "email": "panduwarjaya@gmail.com"
+    }
+  ],
+  "homepage": "http://github.com/WPandu/kredivo-php",
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "kredivo"
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0|^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPandu\\Kredivo\\": "src/"
+    }
+  }
+}

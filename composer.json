@@ -1,5 +1,5 @@
 {
-  "name": "WPandu/kredivo-php",
+  "name": "wpandu/kredivo-php",
   "type": "library",
   "description": "Kredivo payment gateway API wrapper",
   "authors": [

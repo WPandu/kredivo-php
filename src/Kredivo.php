@@ -10,19 +10,22 @@ namespace WPandu\Kredivo;
 class Kredivo
 {
     //For Testing
-    const baseSandboxUrl = 'https://sandbox.kredivo.com/kredivo/';
+    const BASESANBOXURL = 'https://sandbox.kredivo.com/kredivo';
 
     //For Production
-    const baseProductionUrl = 'https://sandbox.kredivo.com/kredivo/';
+    const BASEPRODUCTIONURL = 'https://sandbox.kredivo.com/kredivo';
+
+    //API Version Kredivo
+    const VERSION = 'v2';
 
     //For handle checkout page from kredivo
-    const checkoutUrl = 'v2/checkout_url';
+    const CHECKOUTENDPOINT = 'checkout_url';
 
     //For handle payment types available
-    const paymentTypesUrl = 'v2/payments';
+    const PAYMENTTYPESENDPOINT = 'payments';
 
     //For confirm payment
-    const confirmUrl = 'v2/update';
+    const CONFIRMENDPOINT = 'update';
 
     public static $isProduction = false;
 
@@ -30,21 +33,21 @@ class Kredivo
 
     public static function getCheckoutUrl()
     {
-        return self::wrapUrl(self::checkoutUrl);
+        return self::wrapUrl(self::CHECKOUTENDPOINT);
     }
 
     public static function getPaymentTypesUrl()
     {
-        return self::wrapUrl(self::paymentTypesUrl);
+        return self::wrapUrl(self::PAYMENTTYPESENDPOINT);
     }
 
     public static function getConfirmUrl()
     {
-        return self::wrapUrl(self::confirmUrl);
+        return self::wrapUrl(self::CONFIRMENDPOINT);
     }
 
-    private static function wrapUrl($url)
+    private static function wrapUrl($endpoint)
     {
-        return self::$isProduction ? self::productionUrl . $url : self::sandboxUrl . $url;
+        return sprintf('%s/%s/%s', self::$isProduction ? self::BASEPRODUCTIONURL : self::BASESANBOXURL, self::VERSION, $endpoint);
     }
 }

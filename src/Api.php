@@ -45,16 +45,6 @@ class Api
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public static function paymentTypes($data)
-    {
-        $data['server_key'] = Kredivo::$serverKey;
-        return self::postResponse(Kredivo::getPaymentTypesUrl(), $data);
-    }
-
-    /**
-     * @param $data
-     * @return \Psr\Http\Message\ResponseInterface
-     */
     public static function confirm($data)
     {
         return self::getResponse(Kredivo::getConfirmUrl(), $data);

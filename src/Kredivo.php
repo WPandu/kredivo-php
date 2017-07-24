@@ -27,21 +27,27 @@ class Kredivo
     //For confirm payment
     const CONFIRMENDPOINT = 'update';
 
-    public static $isProduction = false;
+    public $isProduction = false;
 
-    public static $serverKey; //kredivo's merchant unique key
+    public $serverKey; //kredivo's merchant unique key
 
-    public static function getCheckoutUrl()
+    public function __construct($isProduction, $serverKey)
+    {
+        $this->isProduction = $isProduction;
+        $this->serverKey    = $serverKey;
+    }
+
+    public function getCheckoutUrl()
     {
         return self::wrapUrl(self::CHECKOUTENDPOINT);
     }
 
-    public static function getPaymentTypesUrl()
+    public function getPaymentTypesUrl()
     {
         return self::wrapUrl(self::PAYMENTTYPESENDPOINT);
     }
 
-    public static function getConfirmUrl()
+    public function getConfirmUrl()
     {
         return self::wrapUrl(self::CONFIRMENDPOINT);
     }

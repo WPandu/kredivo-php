@@ -14,40 +14,42 @@ class Api
 {
 
     private $client;
+    private $kredivo;
     
     //Api Constructor
-    public function __construct()
+    public function __construct($isProduction, $serverKey)
     {
-        $this->client = new Client();
+        $this->client  = new Client();
+        $this->kredivo = new Kredivo($isProduction, $serverKey);
     }
 
     /**
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public static function checkout($data)
+    public function checkout($data)
     {
-        $data['server_key'] = Kredivo::$serverKey;
-        return self::postResponse(Kredivo::getCheckoutUrl(), $data);
+        $data['server_key'] = $this->kredivo->serverKey;
+        return self::postResponse($this->kredivo->getCheckoutUrl(), $data);
     }
 
     /**
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public static function paymentTypes($data)
+    public function paymentTypes($data)
     {
-        $data['server_key'] = Kredivo::$serverKey;
-        return self::postResponse(Kredivo::getPaymentTypesUrl(), $data);
+        $data['server_key'] = $this->kredivo->serverKey;
+        return self::postResponse($this->kredivo->getPaymentTypesUrl(), $data);
     }
 
     /**
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public static function confirm($data)
+    public function confirm($data)
     {
-        return self::getResponse(Kredivo::getConfirmUrl(), $data);
+        return self::getResponse($this->kredivo->getConfirmUrl(), $data);
     }
 
     /**

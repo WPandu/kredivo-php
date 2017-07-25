@@ -54,6 +54,6 @@ class Kredivo
 
     private static function wrapUrl($endpoint)
     {
-        return sprintf('%s/%s/%s', self::$isProduction ? self::BASEPRODUCTIONURL : self::BASESANBOXURL, self::VERSION, $endpoint);
+        return sprintf('%s/%s/%s', $this->isProduction ? self::BASEPRODUCTIONURL : self::BASESANBOXURL, self::VERSION, $endpoint);
     }
 }

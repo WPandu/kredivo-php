@@ -57,7 +57,7 @@ class Api
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private function postResponse($url, $data, $method)
+    private function postResponse($url, $data)
     {
         $response = $this->client->post($url, [
             ['json' => $data],

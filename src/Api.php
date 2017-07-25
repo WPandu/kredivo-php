@@ -1,6 +1,6 @@
 <?php
 
-namespace WPandu\Api;
+namespace WPandu\Kredivo;
 
 use GuzzleHttp\Client;
 

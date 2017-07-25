@@ -30,7 +30,7 @@ class Api
     public function checkout($data)
     {
         $data['server_key'] = $this->kredivo->serverKey;
-        return self::postResponse($this->kredivo->getCheckoutUrl(), $data);
+        return $this->postResponse($this->kredivo->getCheckoutUrl(), $data);
     }
 
     /**
@@ -40,7 +40,7 @@ class Api
     public function paymentTypes($data)
     {
         $data['server_key'] = $this->kredivo->serverKey;
-        return self::postResponse($this->kredivo->getPaymentTypesUrl(), $data);
+        return $this->postResponse($this->kredivo->getPaymentTypesUrl(), $data);
     }
 
     /**
@@ -49,7 +49,7 @@ class Api
      */
     public function confirm($data)
     {
-        return self::getResponse($this->kredivo->getConfirmUrl(), $data);
+        return $this->getResponse($this->kredivo->getConfirmUrl(), $data);
     }
 
     /**
@@ -57,7 +57,7 @@ class Api
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private static function postResponse($url, $data, $method)
+    private function postResponse($url, $data, $method)
     {
         $response = $this->client->post($url, [
             ['json' => $data],
@@ -72,7 +72,7 @@ class Api
      * @param $data
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private static function getResponse($url, $data)
+    private function getResponse($url, $data)
     {
         $response = $this->client->get($url, [
             ['query' => $data],

@@ -39,20 +39,20 @@ class Kredivo
 
     public function getCheckoutUrl()
     {
-        return self::wrapUrl(self::CHECKOUTENDPOINT);
+        return $this->wrapUrl(self::CHECKOUTENDPOINT);
     }
 
     public function getPaymentTypesUrl()
     {
-        return self::wrapUrl(self::PAYMENTTYPESENDPOINT);
+        return $this->wrapUrl(self::PAYMENTTYPESENDPOINT);
     }
 
     public function getConfirmUrl()
     {
-        return self::wrapUrl(self::CONFIRMENDPOINT);
+        return $this->wrapUrl(self::CONFIRMENDPOINT);
     }
 
-    private static function wrapUrl($endpoint)
+    private function wrapUrl($endpoint)
     {
         return sprintf('%s/%s/%s', $this->isProduction ? self::BASEPRODUCTIONURL : self::BASESANBOXURL, self::VERSION, $endpoint);
     }

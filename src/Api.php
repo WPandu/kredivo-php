@@ -60,10 +60,10 @@ class Api
     private function postResponse($url, $data)
     {
         $response = $this->client->post($url, [
-            ['json' => $data],
+            'json' => $data,
         ]);
 
-        return $response;
+        return json_decode($response->getBody());
     }
 
 
@@ -75,9 +75,9 @@ class Api
     private function getResponse($url, $data)
     {
         $response = $this->client->get($url, [
-            ['query' => $data],
+            'query' => $data,
         ]);
 
-        return $response;
+        return json_decode($response->getBody());
     }
 }

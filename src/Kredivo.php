@@ -13,7 +13,7 @@ class Kredivo
     const BASESANBOXURL = 'https://sandbox.kredivo.com/kredivo';
 
     //For Production
-    const BASEPRODUCTIONURL = 'https://sandbox.kredivo.com/kredivo';
+    const BASEPRODUCTIONURL = 'https://api.kredivo.com/kredivo';
 
     //API Version Kredivo
     const VERSION = 'v2';
